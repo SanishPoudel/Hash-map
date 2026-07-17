@@ -93,6 +93,20 @@ class Hashmap {
     
     return false;
   }
+
+  length() {
+    let count = 0
+    for (let i = 0; i < this.buckets.length; i++) {
+      let current = this.buckets[i];
+      while (current) {
+        if (current.key != null) {
+          count ++;
+        }
+        current = current.next;
+      }
+    }
+    return count;
+  }
 }
 
 
@@ -110,3 +124,4 @@ test.set('jacket', 'blue');
 test.set('kite', 'pink');
 test.set('lion', 'golden');
 console.log(test.has("lion"));
+console.log(test.length());
