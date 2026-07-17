@@ -19,6 +19,8 @@ class Node {
 
 class Hashmap {
   constructor(load = 0.75, capacity = 16) {
+    this.load = load;
+    this.capacity = capacity;
     this.buckets = new Array(capacity).fill(null);
   }
 
@@ -27,7 +29,7 @@ class Hashmap {
     let index = hash(key) % this.capacity;
     if (this.buckets[index] != null) {
       let newNode = new Node(key, value);
-      let current = this.bucket[index];
+      let current = this.buckets[index];
       current.next = newNode;
     } else {
       // creating new one if no existing one is found
