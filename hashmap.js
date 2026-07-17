@@ -107,6 +107,10 @@ class Hashmap {
     }
     return count;
   }
+
+  clear() {
+    this.buckets.fill(null);
+  }
 }
 
 
@@ -125,3 +129,5 @@ test.set('kite', 'pink');
 test.set('lion', 'golden');
 console.log(test.has("lion"));
 console.log(test.length());
+test.clear();
+console.log(test);
