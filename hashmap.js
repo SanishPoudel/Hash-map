@@ -61,6 +61,14 @@ class Hashmap {
 
     return null;
   }
+
+  has(key) {
+    let result = this.get(key);
+    if (result === null) {
+      return false;
+    }
+    return true;
+  }
 }
 
 
@@ -77,4 +85,4 @@ test.set('ice cream', 'white');
 test.set('jacket', 'blue');
 test.set('kite', 'pink');
 test.set('lion', 'golden');
-console.log(test.get("cat"));
+console.log(test.has("lion"));
