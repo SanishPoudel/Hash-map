@@ -69,6 +69,30 @@ class Hashmap {
     }
     return true;
   }
+
+  remove(key) {
+
+    let index = hash(key) % this.capacity;
+    let current = this.buckets[index];
+    let previous = null;
+
+    if (current.key === key) {
+      current = current.next;
+      this.buckets[index] = current;
+      return true;
+    }
+
+    while (current) {
+      if (current.key === key) {
+        previous.next = current.next;
+        return true;
+      }
+      previous = current;
+      current = current.next;
+    }
+    
+    return false;
+  }
 }
 
 
