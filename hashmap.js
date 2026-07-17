@@ -36,7 +36,7 @@ class Hashmap {
         let current = copy[i];
 
         while (current) {
-          
+
           this.set(current.key, current.value);
           current = current.next;
         }
@@ -93,7 +93,7 @@ class Hashmap {
     let current = this.buckets[index];
     let previous = null;
 
-    if (current.key === key) {
+    if (current && current.key === key) {
       current = current.next;
       this.buckets[index] = current;
       return true;
