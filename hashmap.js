@@ -25,13 +25,34 @@ class Hashmap {
   }
 
   set(key, value) {
-    // TODO: insert at existing one
+    // TODO: insert at existing one - need to fix this, it should verify and update if already exists
     let index = hash(key) % this.capacity;
+
     if (this.buckets[index] != null) {
-      let newNode = new Node(key, value);
+
+      // assigns the first item as current node
       let current = this.buckets[index];
-      current.next = newNode;
+
+      // loops through all nodes to check except last node
+      while (current.next) {
+        if (current.key === key) {
+          current.value = value;
+          return;
+        }
+        current = current.next;
+      }
+
+      // checks last node
+      if (current.key === key) {
+        current.value = value;
+      } else {
+        let newNode = new Node(key, value);
+        current.next = newNode;
+      }
+      
+
     } else {
+
       // creating new one if no existing one is found
       let newNode = new Node(key, value);
       this.buckets[index] = newNode;
