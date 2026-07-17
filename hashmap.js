@@ -26,6 +26,23 @@ class Hashmap {
 
   set(key, value) {
 
+    if (this.length() === (Math.floor(this.load * this.capacity))) {
+
+      this.capacity *= 2;
+      let copy = this.buckets.slice();
+      this.buckets = new Array(this.capacity).fill(null);
+
+      for (let i = 0; i < copy.length; i++) {
+        let current = copy[i];
+
+        while (current) {
+          
+          this.set(current.key, current.value);
+          current = current.next;
+        }
+      }
+    }
+
     let index = hash(key) % this.capacity;
     let current = this.buckets[index];
     let previous = null;
