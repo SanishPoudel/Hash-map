@@ -9,8 +9,45 @@ function hash(key) {
   return hashCode;
 } 
 
+class Node {
+  constructor(key = null, value = null, next = null) {
+    this.key = key;
+    this.value = value;
+    this.next = next;
+  }
+}
+
 class Hashmap {
   constructor(load = 0.75, capacity = 16) {
     this.buckets = new Array(capacity).fill(null);
   }
+
+  set(key, value) {
+    // TODO: insert at existing one
+    let index = hash(key) % capacity;
+    if (this.buckets[index] != null) {
+      let newNode = new Node(key, value);
+      let current = this.bucket[index];
+      current.next = newNode;
+    } else {
+      // creating new one if no existing one is found
+      let newNode = new Node(key, value);
+      this.buckets.splice(index, 0, newNode);
+    }
+  }
 }
+
+
+const test = new Hashmap();
+test.set('apple', 'red')
+test.set('banana', 'yellow')
+test.set('carrot', 'orange')
+test.set('dog', 'brown')
+test.set('elephant', 'gray')
+test.set('frog', 'green')
+test.set('grape', 'purple')
+test.set('hat', 'black')
+test.set('ice cream', 'white')
+test.set('jacket', 'blue')
+test.set('kite', 'pink')
+test.set('lion', 'golden')
