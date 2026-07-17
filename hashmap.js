@@ -24,7 +24,7 @@ class Hashmap {
 
   set(key, value) {
     // TODO: insert at existing one
-    let index = hash(key) % capacity;
+    let index = hash(key) % this.capacity;
     if (this.buckets[index] != null) {
       let newNode = new Node(key, value);
       let current = this.bucket[index];
@@ -39,15 +39,16 @@ class Hashmap {
 
 
 const test = new Hashmap();
-test.set('apple', 'red')
-test.set('banana', 'yellow')
-test.set('carrot', 'orange')
-test.set('dog', 'brown')
-test.set('elephant', 'gray')
-test.set('frog', 'green')
-test.set('grape', 'purple')
-test.set('hat', 'black')
-test.set('ice cream', 'white')
-test.set('jacket', 'blue')
-test.set('kite', 'pink')
-test.set('lion', 'golden')
+test.set('apple', 'red');
+test.set('banana', 'yellow');
+test.set('carrot', 'orange');
+test.set('dog', 'brown');
+test.set('elephant', 'gray');
+test.set('frog', 'green');
+test.set('grape', 'purple');
+test.set('hat', 'black');
+test.set('ice cream', 'white');
+test.set('jacket', 'blue');
+test.set('kite', 'pink');
+test.set('lion', 'golden');
+console.log(test);
