@@ -139,6 +139,21 @@ class Hashmap {
   }
   return result;
   }
+
+  entries() {
+    let result = []
+    for (let i = 0; i < this.buckets.length; i++) {
+      let current = this.buckets[i];
+      while (current) {
+        if (current.key != null) {
+          let entry = [current.key, current.value];
+          result.push(entry);
+        }
+        current = current.next;
+      }
+    }
+    return result;
+  }
 }
 
 
@@ -157,4 +172,4 @@ test.set('kite', 'pink');
 test.set('lion', 'golden');
 console.log(test.has("lion"));
 console.log(test.length());
-console.log(test.values());
+console.log(test.entries());
