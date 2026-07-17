@@ -25,7 +25,7 @@ class Hashmap {
   }
 
   set(key, value) {
-    // TODO: insert at existing one - need to fix this, it should verify and update if already exists
+
     let index = hash(key) % this.capacity;
     let current = this.buckets[index];
     let previous = null;
@@ -47,6 +47,20 @@ class Hashmap {
       this.buckets[index] = newNode;
     }
   }
+
+  get(key) {
+    let index = hash(key) % this.capacity;
+    let current = this.buckets[index];
+
+    while(current) {
+      if (current.key === key) {
+        return current.value;
+      }
+      current = current.next;
+    }
+
+    return null;
+  }
 }
 
 
@@ -63,4 +77,4 @@ test.set('ice cream', 'white');
 test.set('jacket', 'blue');
 test.set('kite', 'pink');
 test.set('lion', 'golden');
-console.log(test);
+console.log(test.get("cat"));
