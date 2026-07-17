@@ -34,7 +34,7 @@ class Hashmap {
     } else {
       // creating new one if no existing one is found
       let newNode = new Node(key, value);
-      this.buckets.splice(index, 0, newNode);
+      this.buckets[index] = newNode;
     }
   }
 }
